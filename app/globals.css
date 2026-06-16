@@ -1,26 +1,377 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Tenor+Sans&family=Poppins:wght@300;400;500&display=swap");
+
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --navy: #003052;
+  --navy-dark: #04263c;
+  --navy-darkest: #021f33;
+  --sea-blue: #308EC7;
+  --champagne: #D8D2AB;
+  --canvas: #fbfaf6;
+  --tan: #f3f0e8;
+  --ink: #1c2b35;
+  --body-color: #566571;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: auto;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: "Poppins", -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* Scroll reveal — GSAP sets initial states and animates these */
+.g-reveal {
+  will-change: opacity, transform;
+}
+
+/* Zoom container */
+.img-zoom {
+  overflow: hidden;
+}
+.img-zoom img {
+  transition: transform 0.9s cubic-bezier(0.2, 0.6, 0.2, 1);
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.img-zoom:hover img {
+  transform: scale(1.06);
+}
+
+/* Destination hover arrow */
+.dest-item:hover .dest-arrow {
+  transform: translateX(6px);
+  color: var(--sea-blue) !important;
+}
+.dest-arrow {
+  transition: transform 0.4s ease, color 0.4s ease;
+}
+
+/* Accordion */
+details.cn-acc summary {
+  cursor: pointer;
+  list-style: none;
+}
+details.cn-acc summary::-webkit-details-marker {
+  display: none;
+}
+details.cn-acc .cn-plus {
+  transition: transform 0.35s ease;
+  display: inline-block;
+}
+details.cn-acc[open] .cn-plus {
+  transform: rotate(45deg);
+}
+details.cn-acc .cn-ans {
+  overflow: hidden;
+}
+
+/* FAQ category buttons */
+.cat-btn {
+  font-family: "Tenor Sans", sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 11px;
+  padding: 11px 22px;
+  border: 1px solid #cfd8de;
+  background: transparent;
+  color: #5b6b78;
+  border-radius: 1px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.cat-btn:hover {
+  border-color: var(--sea-blue);
+  color: var(--sea-blue);
+}
+.cat-btn.active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+}
+
+/* Form fields */
+.cn-field {
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--ink);
+  padding: 13px 14px;
+  border: 1px solid #cfd8de;
+  border-radius: 1px;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.25s ease;
+}
+.cn-field:focus {
+  border-color: var(--sea-blue);
+}
+
+/* Buttons */
+.btn-fill {
+  font-family: "Tenor Sans", sans-serif;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #021f33;
+  background: var(--champagne);
+  padding: 16px 34px;
+  border: 1px solid var(--champagne);
+  border-radius: 1px;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+.btn-fill:hover {
+  background: transparent;
+  color: var(--champagne);
+}
+
+.btn-line {
+  font-family: "Tenor Sans", sans-serif;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.55);
+  padding: 16px 34px;
+  border-radius: 1px;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+.btn-line:hover {
+  background: #fff;
+  color: var(--navy);
+}
+
+.btn-navy {
+  font-family: "Tenor Sans", sans-serif;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #fff;
+  background: var(--navy);
+  padding: 16px 34px;
+  border: 1px solid var(--navy);
+  border-radius: 1px;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+.btn-navy:hover {
+  background: transparent;
+  color: var(--navy);
+}
+
+.btn-dark-outline {
+  font-family: "Tenor Sans", sans-serif;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: var(--navy);
+  border: 1px solid var(--navy);
+  padding: 14px 0;
+  border-radius: 1px;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+.btn-dark-outline:hover {
+  background: var(--navy);
+  color: #fff;
+}
+
+/* Nav dropdown banner rows */
+.nav-drop-banner {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.nav-drop-banner img {
+  transition: transform 0.5s ease;
+}
+.nav-drop-banner:hover {
+  transform: translateX(6px);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.4);
+}
+.nav-drop-banner:hover img {
+  transform: scale(1.08);
+}
+.nav-drop-banner:hover .nav-drop-banner-overlay {
+  background: linear-gradient(90deg, rgba(2,31,51,0.75) 0%, rgba(2,31,51,0.4) 55%, rgba(2,31,51,0.05) 100%) !important;
+}
+.nav-drop-banner:hover .nav-drop-banner-accent {
+  opacity: 1 !important;
+}
+.nav-drop-banner:hover .nav-drop-arrow {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
+
+/* Top tagline strip — thin, full-width, sits above the main nav row */
+.nav-tagline-bar span {
+  font-size: 10px;
+}
+@media (max-width: 640px) {
+  .nav-tagline-bar span {
+    font-size: 8.5px;
+    letter-spacing: 0.18em !important;
+  }
+}
+@media (max-width: 400px) {
+  .nav-tagline-bar { display: none !important; }
+}
+
+/* Hide phone text on narrower desktop to keep single nav row uncluttered */
+@media (max-width: 1024px) {
+  .nav-phone { display: none !important; }
+}
+
+/* Trust strip dividers — match whatever column count is actually active,
+   so the vertical lines never end up on the wrong item when the grid
+   collapses at narrower breakpoints. */
+.trust-item { border-left: none; }
+@media (min-width: 901px) {
+  .trust-item:nth-child(3n+2),
+  .trust-item:nth-child(3n) {
+    border-left: 1px solid rgba(255,255,255,0.14);
+  }
+}
+@media (max-width: 900px) {
+  .trust-item:nth-child(2n) {
+    border-left: 1px solid rgba(255,255,255,0.14);
+  }
+}
+
+/* Sticky image columns must behave as normal stacked blocks on mobile —
+   sticky inside a grid that collapses to 1-col otherwise pins the image
+   while the content beside it scrolls underneath. */
+@media (max-width: 900px) {
+  .sticky-img {
+    position: static !important;
+    top: auto !important;
+    height: 320px !important;
+  }
+}
+
+/* ─── Responsive ─────────────────────────────────────────── */
+
+/* ── Semantic mobile classes ───────────────────── */
+
+/* cn-split: asymmetric 2-col splits (text + image) */
+/* cn-grid-2: symmetric 2-col grids */
+/* cn-grid-3: 3-col grids */
+/* cn-grid-4: 4-col grids */
+
+/* Tablet (≤ 900px): big splits stack, multi-col goes 2-col */
+@media (max-width: 900px) {
+  .nav-desktop { display: none !important; }
+  .nav-burger { display: flex !important; }
+
+  .dest-grid-inner { grid-template-columns: 1fr !important; }
+  .dest-boat-wrap { order: -1; margin-bottom: 20px; }
+  .faq-grid-inner { grid-template-columns: 1fr !important; }
+
+  section, footer {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    padding-top: 72px !important;
+    padding-bottom: 72px !important;
+  }
+
+  .cn-split {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+  .cn-grid-3 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .cn-grid-4 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Hero content mobile padding */
+@media (max-width: 900px) {
+  .hero-content-pad { padding: 0 24px 60px !important; }
+}
+@media (max-width: 640px) {
+  .hero-content-pad { padding: 0 16px 48px !important; }
+}
+
+/* Mobile (≤ 640px): everything stacks */
+@media (max-width: 640px) {
+  section, footer {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
+  }
+
+  .cn-split, .cn-grid-2, .cn-grid-3, .cn-grid-4 {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  /* Trust strip stays 2-col on small mobile so it doesn't turn into one long list */
+  .cn-grid-3.cn-keep-2 {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 4px 8px !important;
+  }
+  .trust-label {
+    font-size: 11px !important;
+    max-width: 130px !important;
+  }
+  .trust-item {
+    padding: 6px 8px !important;
+  }
+
+  /* Services stays 2-col at 640 */
+  .cn-grid-4.cn-keep-2 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Hero */
+  .hero-buttons {
+    flex-direction: column !important;
+    gap: 12px !important;
+    align-items: stretch !important;
+  }
+  .hero-buttons a {
+    text-align: center !important;
+  }
+
+  /* Booking process 2-col on small mobile */
+  .cn-grid-4.cn-keep-2 {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 24px !important;
+  }
+
+  /* Contact form rows stay 2-col (name+email, phone+location) */
+  .cn-form-row {
+    grid-template-columns: 1fr !important;
+  }
 }
