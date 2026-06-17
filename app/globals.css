@@ -250,6 +250,20 @@ details.cn-acc .cn-ans {
   .nav-phone { display: none !important; }
 }
 
+/* About page decorative elements — disable on mobile where the layouts stack */
+@media (max-width: 900px) {
+  .seam-badge { display: none !important; }
+  .approach-line { display: none !important; }
+  .bento-grid {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto !important;
+  }
+  .bento-grid > div {
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+}
+
 /* Trust strip dividers — match whatever column count is actually active,
    so the vertical lines never end up on the wrong item when the grid
    collapses at narrower breakpoints. */

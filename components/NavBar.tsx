@@ -5,9 +5,11 @@ import { gsap } from "gsap";
 
 const menus = {
   About: [
-    { label: "About Us", href: "#about", img: "https://irp.cdn-website.com/b371e29e/dms3rep/multi/Copy-of-IMG_2456.webp" },
-    { label: "FAQ", href: "#faq", img: "https://irp.cdn-website.com/b371e29e/dms3rep/multi/shutterstock_2221233211-a85dedf5.jpg" },
-    { label: "Reviews", href: "#contact", img: "https://irp.cdn-website.com/b371e29e/dms3rep/multi/491822608_1203121911819143_4876497069072183930_n.jpg" },
+    { label: "About Us", href: "/about-us", img: "https://irp.cdn-website.com/b371e29e/dms3rep/multi/Copy-of-IMG_2456.webp" },
+    { label: "FAQ", href: "/about-us/faq", img: "https://irp.cdn-website.com/b371e29e/dms3rep/multi/shutterstock_2221233211-a85dedf5.jpg" },
+    { label: "Reviews", href: "/about-us/reviews", img: "https://irp.cdn-website.com/b371e29e/dms3rep/multi/491822608_1203121911819143_4876497069072183930_n.jpg" },
+    { label: "The Fleet", href: "/about-us/the-fleet", img: "https://irp.cdn-website.com/b371e29e/dms3rep/multi/imgi_34_Whitsundays-Impulsive-64dcaccd-8309e5a4.jpg" },
+    { label: "Blog", href: "#", img: "https://irp.cdn-website.com/b371e29e/dms3rep/multi/imgi_23_Brisbane-Image-impulsive-4027769e-fcf6aa25.jpg" },
   ],
   Destinations: [
     { label: "Australia-Wide", href: "#destinations", img: "https://irp.cdn-website.com/b371e29e/dms3rep/multi/491822608_1203121911819143_4876497069072183930_n.jpg" },
@@ -18,6 +20,7 @@ const menus = {
     { label: "Whitsundays", href: "#destinations", img: "https://irp.cdn-website.com/b371e29e/dms3rep/multi/imgi_34_Whitsundays-Impulsive-64dcaccd-8309e5a4.jpg" },
   ],
   Services: [
+    { label: "Services", href: "#services", img: "https://lirp.cdn-website.com/b371e29e/dms3rep/multi/opt/kXc6774kQxWP6ojKn0pW_freepik_video-upscale_2560x1440_30fps_52975.v2.0000000-1920w.jpg" },
     { label: "Activities", href: "#services", img: "https://irp.cdn-website.com/b371e29e/dms3rep/multi/shutterstock_2479149491.jpg" },
     { label: "Charter Hire", href: "#services", img: "https://irp.cdn-website.com/b371e29e/dms3rep/multi/491822608_1203121911819143_4876497069072183930_n.jpg" },
     { label: "Memberships & Syndication", href: "#services", img: "https://irp.cdn-website.com/b371e29e/dms3rep/multi/Copy-of-IMG_2456.webp" },
@@ -31,6 +34,7 @@ const navLinks: { label: string; href?: string }[] = [
   { label: "About" },
   { label: "Destinations" },
   { label: "Services" },
+  { label: "Socials", href: "#" },
   { label: "Gallery", href: "#" },
   { label: "Contact", href: "#contact" },
 ];
@@ -159,7 +163,7 @@ export default function NavBar() {
           }}
         >
         {/* Logo */}
-        <a href="#top" style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
+        <a href="/" style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="https://irp.cdn-website.com/b371e29e/dms3rep/multi/logowhite.png"

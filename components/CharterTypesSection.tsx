@@ -67,7 +67,7 @@ export default function CharterTypesSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} style={{ background: "#fbfaf6", padding: "104px 56px" }}>
+    <section ref={sectionRef} id="fleet" style={{ background: "#fbfaf6", padding: "104px 56px" }}>
       <div style={{ maxWidth: 1240, margin: "0 auto" }}>
         <div className="types-header" style={{ textAlign: "center", marginBottom: 58 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 22, justifyContent: "center" }}>
